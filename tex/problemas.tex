@@ -202,29 +202,41 @@ Si el condensador está completamente cargado determina:
 			circuit ee IEC,
 			set resistor graphic=var resistor IEC graphic
 		]
-		\draw (0,0) to[battery={info=$30V$, pos=0.25},
-			resistor={info=$3\Omega$, pos=0.75, xscale=-1}]
+		\draw (0,0) to[current direction={pos=0.1, info=$I_1$},
+			battery={info=$30V$, pos=0.25, xscale=-1},
+			resistor={info=$3\Omega$, pos=0.75}]
 			++(0,3)
-			-- ++(3,0)
+			to[current direction={pos=0.6, info'=$A_3$}] ++(3,0)
 			to[capacitor={pos=0.25, info=$10\mu F$},
 			resistor={pos=0.75, info'=$10\Omega$}]
 			++(0,-3)
 			-- (0,0);
 
-		\draw (3,0) to[battery={pos=0.25, info'=$40V$},
-			amperemeter={pos=0.5, info=$A_1$},
-			resistor={pos=0.75, info=$4\Omega$},
-			ground={pos=1}] ++(5,0);
+		\draw (1.5,3)
+			to[
+				current direction={pos=0.1, info=$I_2$},
+				amperemeter={pos=0.25, info=$A_2$},
+				battery={pos=0.5, info=$20V$, xscale=-1},
+				resistor={pos=0.75, info=$4\Omega$},
+				ground={pos=1}
+			] ++(0,4);
 
 		\draw (3,0)
-			to[resistor={info'=$4\Omega$}, ground={pos=1}]
+			to[
+				resistor={info'=$4\Omega$},
+				ground={pos=1},
+				current direction={pos=0.8, info'=$I_4$}
+			]
 			++(45:3);
 
-		\draw (1.5,3) to[
-			amperemeter={pos=0.25, info=$A_2$},
-			battery={pos=0.5, info=$20V$},
-			resistor={pos=0.75, info=$4\Omega$},
-			ground={pos=1}] ++(0,4);
+		\draw (3,0)
+			to[
+				current direction'={pos=0.1, info=$I_5$},
+				battery={pos=0.25, info'=$40V$},
+				amperemeter={pos=0.5, info=$A_1$},
+				resistor={pos=0.75, info=$4\Omega$},
+				ground={pos=1}
+			] ++(5,0);
 
 	\end{tikzpicture}
 \end{figure}
