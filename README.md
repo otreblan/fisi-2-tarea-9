@@ -1,10 +1,7 @@
-# A template
+# Tarea
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 
-A LaTeX template to take notes.
-One file per class.
-
-## Dependencies
+## Dependencias
 
 * `biber` [![Arch Linux package](https://img.shields.io/archlinux/v/community/any/biber.svg?style=flat-square&logo=arch-linux)](https://www.archlinux.org/packages/community/any/biber/)
 * `inkscape` [![Arch Linux package](https://img.shields.io/archlinux/v/extra/x86_64/inkscape.svg?style=flat-square&logo=arch-linux)](https://www.archlinux.org/packages/extra/x86_64/inkscape/)
@@ -18,15 +15,15 @@ One file per class.
 ### Linux
 
 ```sh
-$ git clone https://github.com/otreblan/1def
-$ cd 1def
+$ git clone https://github.com/otreblan/fisi-2-tarea-9
+$ cd fisi-2-tarea-9
 $ make
 ```
 
 ### Windows
 
-Install Linux
+Instala Linux
 
 ### MacOS
 
-Install Linux
+Instala Linux

@@ -30,19 +30,23 @@ En el circuito mostrado, obtén:
 		\draw (0,0) to[resistor={info=$10\Omega$}] (5,0)
 			node[contact] {} node[above right] {$c$}
 			-- ++(0,2)
-			to[resistor={info'=$4\Omega$}] ++(-2,0)
-			node[contact] {} node[below] {$b$}
-			to[battery={xscale=-1, info'=$5V$}] ++(-1,0)
-			to[resistor={info'=$1\Omega$},
-			current direction={pos=0.9, info=$I_3$}] ++(-2,0)
+			to[
+				resistor          = {pos=0.2, info'=$4\Omega$},
+				contact           = {pos=0.4, info'=$b$},
+				battery           = {pos=0.5, xscale=-1, info'=$5V$},
+				current direction = {pos=0.6, info=$I_3$},
+				resistor          = {pos=0.8, info'=$1\Omega$}
+			] ++(-5,0)
 			to[current direction={pos=0.4, info'=$I_1$}]
 			++(0,-2);
 
 		\draw (5,2) -- ++(0,2)
-			to[resistor={info'=$3\Omega$}] ++(-2,0)
-			node[contact] {} node[below] {$a$}
-			to[battery={xscale=-1, info'=$10V$}] ++(-1,0)
-			to[resistor={info'=$2\Omega$}] ++(-2,0)
+			to[
+				resistor = {pos=0.2,info'=$3\Omega$},
+				contact  = {pos=0.4, info'=$a$},
+				battery  = {pos=0.5, xscale=-1, info'=$10V$},
+				resistor = {pos=0.8, info'=$2\Omega$}
+			] ++(-5,0)
 			to[current direction={pos=0.8, info'=$I_2$}]
 			++(0,-2);
 
@@ -93,15 +97,24 @@ En el circuito mostrado, obtén:
 			V_a - V_b &= -5 - \left( -\frac{1}{5} \right) +
 			2 \left( \frac{4}{5} \right)\\
 			V_a - V_b &= -5 + \frac{9}{5}\\
-			V_a - V_b &= -\frac{16}{5}V
+			\Aboxed
+			{
+				V_a - V_b &= -\frac{16}{5}V
+			}
 		\end{align*}
 	\item El potencial en $a$ y $b$, si el punto $c$ es conectado a tierra.
 		\begin{align*}
 			0 - 4I_3 &= V_b\\
-			V_b &= \frac{4}{5} V\\
+			\Aboxed
+			{
+				V_b &= \frac{4}{5} V
+			}\\
 			\\
 			0 - 3I_2 &= V_a\\
-			V_a &= - \frac{12}{5} V
+			\Aboxed
+			{
+				V_a &= - \frac{12}{5} V
+			}
 		\end{align*}
 \end{enumerate}
 
@@ -119,17 +132,22 @@ apreciable. Calcula:
 			circuit ee IEC,
 			set resistor graphic=var resistor IEC graphic
 		]
-		\draw (0,0) to[resistor={info'=$4\Omega$},
-			current direction={pos=0.9, info'=$3A$}]
+		\draw (0,0) to[
+				resistor          = {info'=$4\Omega$},
+				current direction = {pos=0.9, info'=$3A$}
+			]
 			++(0,-2)
 			-- ++(6,0)
-			to[ current direction'={pos=0.1, info=$5A$}, resistor={info'=$6\Omega$} ]
+			to[
+				current direction' = {pos=0.1, info=$5A$},
+				resistor           = {info'=$6\Omega$}
+			]
 			++(0,2)
 			to[
-				current direction'={pos=0.1, info=$7A$},
-				battery={pos=0.25, info'=$\mathcal{E}_1$},
-				battery={pos=0.75, xscale=-1, info'=$\mathcal{E}_2$},
-				current direction={pos=0.9, info'=$1A$}
+				current direction' = {pos=0.1, info=$7A$},
+				battery            = {pos=0.25, info'=$\mathcal{E}_1$},
+				battery            = {pos=0.75, xscale=-1, info'=$\mathcal{E}_2$},
+				current direction  = {pos=0.9, info'=$1A$}
 			] (0,0)
 			;
 
@@ -138,8 +156,10 @@ apreciable. Calcula:
 
 		\draw (0,0)
 			-- ++(0,1)
-			to[ current direction'={pos=0.25, info'=$2A$},
-			resistor={info=$R$}]
+			to[
+				current direction' = {pos=0.25, info'=$2A$},
+				resistor           = {info=$R$}
+			]
 			++(6,0)
 			--
 			++(0,-1)
@@ -202,40 +222,47 @@ Si el condensador está completamente cargado determina:
 			circuit ee IEC,
 			set resistor graphic=var resistor IEC graphic
 		]
-		\draw (0,0) to[current direction={pos=0.1, info=$I_1$},
-			battery={info=$30V$, pos=0.25, xscale=-1},
-			resistor={info=$3\Omega$, pos=0.75}]
+		\draw (0,0) to[
+				current direction = {pos=0.1, info=$I_3$},
+				battery           = {info=$30V$, pos=0.25, xscale=-1},
+				resistor          = {info=$3\Omega$, pos=0.75}
+			]
 			++(0,3)
-			to[current direction={pos=0.6, info'=$A_3$}] ++(3,0)
-			to[capacitor={pos=0.25, info=$10\mu F$},
-			resistor={pos=0.75, info'=$10\Omega$}]
+			to[current direction'={pos=0.6, info=0A}] ++(3,0)
+			to[
+				capacitor = {pos=0.25, info=$10\mu F$},
+				resistor  = {pos=0.75, info'=$10\Omega$}
+			]
 			++(0,-3)
 			-- (0,0);
 
 		\draw (1.5,3)
 			to[
-				current direction={pos=0.1, info=$I_2$},
-				amperemeter={pos=0.25, info=$A_2$},
-				battery={pos=0.5, info=$20V$, xscale=-1},
-				resistor={pos=0.75, info=$4\Omega$},
-				ground={pos=1}
+				current direction = {pos=0.1, info=$I_3$},
+				amperemeter       = {pos=0.25, info=$A_2$},
+				battery           = {pos=0.5, info=$20V$, xscale=-1},
+				resistor          = {pos=0.75, info=$4\Omega$},
+				contact           = {pos=0.95, transform shape, info=$c$},
+				ground            = {pos=1}
 			] ++(0,4);
 
 		\draw (3,0)
 			to[
-				resistor={info'=$4\Omega$},
-				ground={pos=1},
-				current direction={pos=0.8, info'=$I_4$}
+				resistor          = {pos=0.4, info'=$4\Omega$},
+				current direction = {pos=0.7, info'=$I_2$},
+				contact           = {pos=0.8, info=$b$},
+				ground            = {pos=1}
 			]
-			++(45:3);
+			++(45:4);
 
 		\draw (3,0)
 			to[
-				current direction'={pos=0.1, info=$I_5$},
-				battery={pos=0.25, info'=$40V$},
-				amperemeter={pos=0.5, info=$A_1$},
-				resistor={pos=0.75, info=$4\Omega$},
-				ground={pos=1}
+				current direction' = {pos=0.1, info=$I_1$},
+				battery            = {pos=0.25, info'=$40V$},
+				amperemeter        = {pos=0.5, info=$A_1$},
+				resistor           = {pos=0.75, info=$4\Omega$},
+				contact            = {pos=0.93, info'=$a$},
+				ground             = {pos=1}
 			] ++(5,0);
 
 	\end{tikzpicture}
@@ -243,7 +270,55 @@ Si el condensador está completamente cargado determina:
 
 \begin{enumerate}[label=\alph*.]
 	\item La lectura de cada amprerímetro.
+		\begin{align*}
+			I_1 &= I_2 + I_3
+		\end{align*}
+		\begin{align*}
+			\intertext{$a$ a $c$}
+			-4I_1 - 2I_1 + 40 + 30 - 3I_3 - 3I_3 + 20 - 4I_3 &= 0\\
+			6I_1 +10I_3 &= 90\\
+			3I_1 +5I_3 &= 45
+			\intertext{$a$ a $b$}
+			-4I_1 - 2I_1 + 40 -4I_2 &= 0\\
+			6I_1 +4I_2 &= 40\\
+			3I_1 +2I_2 &= 20
+			\intertext{Ecuaciones de solo $I_2$ y $I_3$}
+			3(I_2+I_3) + 5I_3 &= 45\\
+			3I_2 + 8I_3 &= 45\\
+			I_2 &= \frac{45-8I_3}{3}
+			\\
+			3(I_2+I_3) +2I_2 &= 20\\
+			5I_2 + 3I_3 &= 20\\
+			I_2 &= \frac{20-3I_3}{5}\\
+			\\
+			\frac{45-8I_3}{3} &= \frac{20-3I_3}{5}\\
+			225 - 40I_3 &= 60 - 9I_3\\
+			\Aboxed
+			{
+				A_2 = I_3 &= \frac{165}{31}A
+			}\\
+			\\
+			I_2 &= \frac{20-3
+			\left(
+				\frac{165}{31}
+			\right)
+			}{5}\\
+			\Aboxed
+			{
+				I_2 &= \frac{25}{31}A
+			}\\
+			\\
+			I_1 &= \frac{25}{31} + \frac{165}{31} \\
+			\Aboxed
+			{
+				A_1 = I_1 &= \frac{190}{31} A
+			}
+		\end{align*}
 	\item La carga almacenada en el capacitor.
+		\begin{align*}
+			30-3I_3 &= \cancel{-10*0}+ \frac{Q}{10\mu}\\
+			Q &= \frac{4350}{31}\mu C
+		\end{align*}
 \end{enumerate}
 \end{document}
 %}}}
